@@ -1,38 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/12/03 11:58:34 by isahmed           #+#    #+#             */
+/*   Updated: 2024/12/03 11:58:54 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	i;
+	char	*str;
+	int		i;
+	int		len1;
+	int		len2;
 
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
 	i = 0;
-	while (s[i] != 0)
+	str = malloc(sizeof(char) * (len1 + len2 + 1));
+	while (i < len1)
 	{
-		f(i, &s[i]);
+		str[i] = s1[i];
 		i ++;
 	}
+	i = 0;
+	while (i < len2)
+	{
+		str[len1 + i] = s2[i];
+		i ++;
+	}
+	str[len1 + len2] = 0;
+	return (str);
 }
 
-// void    test(unsigned int n, char *c)
+// int main(void)
 // {
-	// *c = 'k';
-// }
+//     printf("%s\n", ft_strjoin("hello", "world"));
 
-// int     main(void)
-// {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
+//     return (0);
 // }

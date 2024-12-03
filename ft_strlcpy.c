@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/12/03 11:43:26 by isahmed           #+#    #+#             */
+/*   Updated: 2024/12/03 11:43:45 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+size_t	ft_strlcpy(char *dst, char *src, size_t size)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (s[i] != 0)
+	while (src[i] != '\0' && i < (size - 1))
 	{
-		f(i, &s[i]);
+		dst[i] = src[i];
 		i ++;
 	}
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }
 
-// void    test(unsigned int n, char *c)
+// int main()
 // {
-	// *c = 'k';
-// }
+//     int buffer_size = 10;
+//     char dest[buffer_size];
+//     char src[] = "abc";
 
-// int     main(void)
-// {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
+//     ft_strlcpy(dest, src, buffer_size);
+//     printf("Dest: %s", dest);
+//     return 0;
 // }

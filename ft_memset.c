@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/11/29 13:32:38 by isahmed           #+#    #+#             */
+/*   Updated: 2024/11/29 13:40:23 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int	i;
+	size_t			i;
+	unsigned char	*ptr;
 
 	i = 0;
-	while (s[i] != 0)
+	ptr = (unsigned char *)s;
+	while (i < n)
 	{
-		f(i, &s[i]);
+		ptr[i] = (unsigned char)c;
 		i ++;
 	}
+	return (s);
 }
 
-// void    test(unsigned int n, char *c)
+// int	main(void)
 // {
-	// *c = 'k';
-// }
+// 	char	str1[] = "hello world";
+// 	char	str2[] = "hello world";
 
-// int     main(void)
-// {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
+// 	printf("%s\n",(char *) ft_memset(str1, 55, (1)));
+// 	printf("%s\n",(char *) memset(str2, 55, (1)));
+// 	return(0);
 // }

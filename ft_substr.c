@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/12/03 11:21:09 by isahmed           #+#    #+#             */
+/*   Updated: 2024/12/03 11:57:10 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	i;
+	size_t	i;
+	char	*ptr;
 
+	if (ft_strlen(s) < start || ft_strlen(s) < len + start)
+		return (NULL);
 	i = 0;
-	while (s[i] != 0)
+	ptr = malloc(sizeof(char) * (len + 1));
+	while (i < len)
 	{
-		f(i, &s[i]);
+		ptr[i] = s[start + i];
 		i ++;
 	}
+	ptr[i] = 0;
+	return (ptr);
 }
 
-// void    test(unsigned int n, char *c)
+// int main(void)
 // {
-	// *c = 'k';
-// }
-
-// int     main(void)
-// {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
+//     char    *substring = ft_substr("hello world", 4, 5);
+//     printf("%s\n", substring);
 // }

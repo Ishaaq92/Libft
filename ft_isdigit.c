@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/11/29 11:57:25 by isahmed           #+#    #+#             */
+/*   Updated: 2024/11/29 12:05:28 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	ft_isdigit(int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != 0)
-	{
-		f(i, &s[i]);
-		i ++;
-	}
+	if (c >= 48 && c <= 57)
+		return (2048);
+	return (0);
 }
+/*
+int	main(void)
+{
+	printf("%d\n", ft_isdigit(-8));
+	printf("%d\n", isdigit(-8));
 
-// void    test(unsigned int n, char *c)
-// {
-	// *c = 'k';
-// }
-
-// int     main(void)
-// {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
-// }
+	return (0);
+}
+*/

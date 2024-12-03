@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/12/03 11:21:16 by isahmed           #+#    #+#             */
+/*   Updated: 2024/12/03 11:52:48 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
+	int		i;
+	char	*str;
 
+	str = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	i = 0;
+	if (!str)
+		return (NULL);
 	while (s[i] != 0)
 	{
-		f(i, &s[i]);
+		str[i] = f(i, s[i]);
 		i ++;
 	}
+	str[i] = 0;
+	return (str);
 }
 
-// void    test(unsigned int n, char *c)
+// char    test(unsigned int n, char c)
 // {
-	// *c = 'k';
+//     return ('k');
 // }
 
-// int     main(void)
+// int main(void)
 // {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
+//     char    *string = "hello";
+//     printf("%s\n", ft_strmapi(string, test));
+
+//     return (0);
 // }

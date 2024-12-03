@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/12/03 11:33:45 by isahmed           #+#    #+#             */
+/*   Updated: 2024/12/03 11:37:02 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	i;
+	size_t			i;
+	unsigned char	*p_src;
+	unsigned char	*ptr;
 
 	i = 0;
-	while (s[i] != 0)
+	p_src = (unsigned char *) s;
+	while (p_src[i] != 0 && i < n)
 	{
-		f(i, &s[i]);
+		if (p_src[i] == (unsigned char) c)
+		{
+			ptr = &p_src[i];
+			return (ptr);
+		}
 		i ++;
 	}
+	return (0);
 }
 
-// void    test(unsigned int n, char *c)
+// int	main(void)
 // {
-	// *c = 'k';
-// }
+// 	printf("%p\n", ft_memchr("Hello World!", 101, 12));
+// 	printf("%p\n", memchr("Hello World!", 101, 12));
 
-// int     main(void)
-// {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
+// 	return (0);
 // }

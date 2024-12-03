@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/12/03 11:44:06 by isahmed           #+#    #+#             */
+/*   Updated: 2024/12/03 11:44:57 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	int		i;
+	char	*ptr;
 
 	i = 0;
+	ptr = 0;
 	while (s[i] != 0)
 	{
-		f(i, &s[i]);
+		if (s[i] == c)
+			ptr = (char *) &s[i];
 		i ++;
 	}
+	return (ptr);
 }
 
-// void    test(unsigned int n, char *c)
+// int main(void)
 // {
-	// *c = 'k';
-// }
-
-// int     main(void)
-// {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
+// 	char	*string = "hello world\n";
+// 	printf("%s \n", ft_strrchr(string, 65));
 // }

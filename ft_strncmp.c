@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/12/03 11:49:58 by isahmed           #+#    #+#             */
+/*   Updated: 2024/12/03 11:50:40 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (s[i] != 0)
+	while ((s1[i] != 0 || s2[i] != 0) && i < n)
 	{
-		f(i, &s[i]);
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i ++;
 	}
+	return (0);
 }
 
-// void    test(unsigned int n, char *c)
+// int main()
 // {
-	// *c = 'k';
-// }
+//     char str1[] = "hello31";
+//     char str2[] = "hello71";
 
-// int     main(void)
-// {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
+//     printf("%d", ft_strncmp(str1, str2, 6));
+//     return (0);
 // }

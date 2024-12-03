@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/11/29 11:52:04 by isahmed           #+#    #+#             */
+/*   Updated: 2024/11/29 11:54:05 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	ft_isalpha(int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != 0)
-	{
-		f(i, &s[i]);
-		i ++;
-	}
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1024);
+	return (0);
 }
 
-// void    test(unsigned int n, char *c)
+// int	main(void)
 // {
-	// *c = 'k';
-// }
+// 	// Testing
+// 	// In set, out of set, boundary values
 
-// int     main(void)
-// {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
+// 	printf("ft_isalpha: %d\n", ft_isalpha(0));
+// 	printf("isalpha: %d\n", isalpha(0));
 // }

@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/11/27 18:19:07 by isahmed           #+#    #+#             */
+/*   Updated: 2024/12/03 11:51:08 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	toupper(int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != 0)
-	{
-		f(i, &s[i]);
-		i ++;
-	}
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
 }
 
-// void    test(unsigned int n, char *c)
+// #include <stdio.h>
+// int main(void)
 // {
-	// *c = 'k';
-// }
-
-// int     main(void)
-// {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
+//     printf("%d", toupper('a'));
+//     return (0);
 // }

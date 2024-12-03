@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 13:11:19 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 13:13:51 by isahmed          ###   ########.fr       */
+/*   Created: 2024/12/03 11:40:26 by isahmed           #+#    #+#             */
+/*   Updated: 2024/12/03 11:40:28 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+char	*ft_strdup(const char *s)
 {
-	int	i;
+	int		i;
+	char	*duplicate;
 
 	i = 0;
+	duplicate = malloc((sizeof(char) + 1) * ft_strlen(s));
 	while (s[i] != 0)
 	{
-		f(i, &s[i]);
-		i ++;
+		duplicate[i] = s[i];
+		i++;
 	}
+	duplicate[i] = 0;
+	return (duplicate);
 }
 
-// void    test(unsigned int n, char *c)
+// int main(void)
 // {
-	// *c = 'k';
-// }
+//     char    *test = "this is a test!!";
+//     printf("%s\n", ft_strdup(test));
+//     printf("%s\n", strdup(test));
 
-// int     main(void)
-// {
-//     char    string[] = "Hello World!";
-//     printf("%s\n", string);
-//     ft_striteri(string, test);
-//     printf("%s\n", string);
+//     return (0);
 // }
