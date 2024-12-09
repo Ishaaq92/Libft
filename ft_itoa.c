@@ -6,35 +6,36 @@
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 19:36:41 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 12:05:55 by isahmed          ###   ########.fr       */
+/*   Updated: 2024/12/03 16:50:52 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*rearappend(char *str, char c)
-{
-	char	*new_str;
-	int		i;
-	int		length;
+// static char	*rearappend(char *str, char c)
+// {
+// 	char	*new_str;
+// 	int		i;
+// 	int		length;
 
-	i = 0;
-	length = ft_strlen(str);
-	new_str = malloc((length + 2) * sizeof(char));
-	new_str[0] = c;
-	if (length == 0)
-	{
-		new_str[1] = 0;
-		return (new_str);
-	}
-	while (str[i] != 0)
-	{
-		new_str[1 + i] = str[i];
-		i ++;
-	}
-	new_str[1 + i] = 0;
-	return (new_str);
-}
+// 	i = 0;
+// 	length = ft_strlen(str);
+// 	new_str = malloc((length + 2) * sizeof(char));
+// 	new_str[0] = c;
+// 	if (length == 0)
+// 	{
+// 		new_str[1] = 0;
+// 		return (new_str);
+// 	}
+// 	while (str[i] != 0)
+// 	{
+// 		new_str[1 + i] = str[i];
+// 		i ++;
+// 	}
+// 	new_str[1 + i] = 0;
+// 	free(str);
+// 	return (new_str);
+// }
 
 static int	nbrdigits(long n)
 {
@@ -53,28 +54,26 @@ static int	nbrdigits(long n)
 
 char	*ft_itoa(int n)
 {
+	long	num;
+	int		len;
 	char	*nbr;
-	int		number_of_digits;
-	int		negative;
-	long	number;
 
-	number = (long) n;
-	number_of_digits = nbrdigits(n);
-	negative = (number < 0);
-	nbr = malloc(sizeof(char) * (number_of_digits + 1 + negative));
-	if (negative)
-		number = -number;
+	num = n;
+	len = nbrdigits(num) + (num < 0);
+	nbr = malloc(len + 1);
 	if (!nbr)
 		return (NULL);
-	while (number / 10 > 0)
+	nbr[len] = 0;
+	if (num < 0)
 	{
-		nbr = rearappend(nbr, (number % 10) + 48);
-		number = number / 10;
+		nbr[0] = '-';
+		num = -num;
 	}
-	nbr = rearappend(nbr, (number % 10 + 48));
-	if (negative == 1)
-		nbr = rearappend(nbr, '-');
-	nbr[number_of_digits + 1 + negative] = 0;
+	while (--len >= (n < 0))
+	{
+		nbr[len] = (num % 10) + '0';
+		num /= 10;
+	}
 	return (nbr);
 }
 
@@ -82,9 +81,8 @@ char	*ft_itoa(int n)
 // {
 // 	char	*res;
 
-// 	res = ft_itoa(740);
+// 	res = ft_itoa(2147483647);
 // 	printf("%s", res);
-// 	// // printf("%s\n", rearappend("", '2'));
 // 	// printf("%d\n", nbrdigits(-2147483648));
 // 	free(res);
 // 	return (0);

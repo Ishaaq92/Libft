@@ -6,7 +6,7 @@
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:20:54 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 12:00:11 by isahmed          ###   ########.fr       */
+/*   Updated: 2024/12/04 10:35:29 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	j = ft_strlen(s1) - 1;
 	while (check(set, s1[j]) == 1)
 		j --;
-	str = ft_substr(s1, i, j - i);
+	str = ft_substr(s1, i, j - i + 1);
 	return (str);
 }
 
@@ -48,6 +48,5 @@ char	*ft_strtrim(char const *s1, char const *set)
 //     const char    set[] = " ";
 //     const char    *result;
 //     result = ft_strtrim(test, set);
-//     printf("%d\n", check(test, 't'));
 //     printf("%s\n", result);
 // }

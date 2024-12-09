@@ -1,49 +1,33 @@
-#include <unistd.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/03 13:32:14 by isahmed           #+#    #+#             */
+/*   Updated: 2024/12/03 17:31:26 by isahmed          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int power(int n, int m)
+#include "libft.h"
+
+void	ft_putnbr_fd(int n, int fd)
 {
-    int     total;
+	long	number;
 
-    total = n;
-    if (m == 0)
-        return (1);
-    while (m > 1)
-    {
-        total = total * n;
-        m --;
-    }
-    return (total);
+	number = (long) n;
+	if (number < 0)
+	{
+		ft_putchar_fd('-', fd);
+		number = -number;
+	}
+	if (number / 10 > 0)
+		ft_putnbr_fd(number / 10, fd);
+	ft_putchar_fd(((number % 10) + 48), fd);
 }
 
-int     nbrofdigits(int n)
-{
-    int     digits;
-
-    digits = 0;
-    while (n / 10 > 0)
-    {
-        digits ++;
-        n = n / 10;
-    }
-    return (digits + 1);
-}
-
-void ft_putnbr_fd(int n, int fd)
-{
-    int     i;
-    int     digits;
-
-    i = 0;
-    digits = nbrofdigits(n);
-    // while ((n / 10) > 0)
-    // {
-    //     write(fd, )
-    // }
-}
-
-
-int     main(void)
-{
-    printf("%d\n", power(5, 0));
-}
+// int     main(void)
+// {
+//     ft_putnbr_fd(-0, 2);
+// }

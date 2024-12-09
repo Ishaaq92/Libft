@@ -6,7 +6,7 @@
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:40:26 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 11:40:28 by isahmed          ###   ########.fr       */
+/*   Updated: 2024/12/04 14:19:46 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*ft_strdup(const char *s)
 	char	*duplicate;
 
 	i = 0;
-	duplicate = malloc((sizeof(char) + 1) * ft_strlen(s));
+	duplicate = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!duplicate)
+		return (NULL);
 	while (s[i] != 0)
 	{
 		duplicate[i] = s[i];

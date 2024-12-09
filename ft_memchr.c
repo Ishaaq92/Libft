@@ -6,7 +6,7 @@
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:33:45 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 11:37:02 by isahmed          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:11:48 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,17 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	unsigned char	*ptr;
 
 	i = 0;
+	if (n == 0)
+		return (NULL);
 	p_src = (unsigned char *) s;
-	while (p_src[i] != 0 && i < n)
+	if (c == 0)
+	{
+		while (p_src[i] != 0)
+			i ++;
+		ptr = &p_src[i];
+		return (ptr);
+	}
+	while (i < n)
 	{
 		if (p_src[i] == (unsigned char) c)
 		{
@@ -29,13 +38,14 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		}
 		i ++;
 	}
-	return (0);
+	return (NULL);
 }
 
 // int	main(void)
 // {
-// 	printf("%p\n", ft_memchr("Hello World!", 101, 12));
-// 	printf("%p\n", memchr("Hello World!", 101, 12));
+// 	char	s[] = {0, 1, 2, 3, 4, 5};
+// 	printf("ft_memchr: %s\n", (char*) ft_memchr(s, 50, 5));
+// 	printf("memchr: %s\n", (char*) memchr(s, 50, 5));
 
 // 	return (0);
 // }

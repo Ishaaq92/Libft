@@ -6,41 +6,46 @@
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:20:58 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 12:28:57 by isahmed          ###   ########.fr       */
+/*   Updated: 2024/12/06 17:43:14 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-size_t	ft_strlcat(char *dest, char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	i;
-	size_t	n;
+	size_t	j;
+	size_t	dlen;
+	size_t	slen;
 
-	i = 0;
-	n = ft_strlen(dest);
-	if (n > size)
-		return (n);
-	while (src[i] != '\0' && i < size - n - 1)
+	j = 0;
+	dlen = 0;
+	slen = ft_strlen(src);
+	while (dlen < size && dst[dlen] != 0)
+		dlen ++;
+	while (src[j] != 0 && (dlen + j + 1) < size)
 	{
-		dest[n + i] = src[i];
-		i ++;
+		dst[dlen + j] = src[j];
+		j ++;
 	}
-	dest[n + i] = '\0';
-	return (size + ft_strlen(src));
+	if (dlen != size)
+		dst[dlen + j] = 0;
+	return (dlen + slen);
 }
 
 // int main()
 // {
-//     char *src = "hello ";
-//     char dst[24];
+//     //char *src = "this123123123";
+//     char dst[10];
 
-//     // int val = ft_strlcat(s1, s2, 3);
-//     // printf("Final length of Dest: %d\n", val);
-//     printf("Final String: %s\n", src);
-
-// 	int val = strlcat(dst, src, 3);
+// 	dst[0] = 't';
+// 	dst[1] = 'e';
+// 	dst[2] = 's';
+// 	dst[3] = 't';
+// 	int val = ft_strlcat(dst, "Hello world!", 10);
+//     printf("OUTPUT of ft_strlcat: %d\n", val);
 //     printf("Final String: %s\n", dst);
+
 // 	return 0;
 // }

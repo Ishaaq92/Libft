@@ -6,7 +6,7 @@
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:54:35 by isahmed           #+#    #+#             */
-/*   Updated: 2024/11/29 13:57:10 by isahmed          ###   ########.fr       */
+/*   Updated: 2024/12/04 13:51:31 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	p_dest = dest;
 	p_src = (unsigned char *)src;
+	if (!p_dest && !p_src)
+		return (NULL);
 	while (i < n)
 	{
 		p_dest[i] = p_src[i];
@@ -31,11 +33,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 // int	main(void)
 // {
-
-// 	// TEST
-
-// 	// EDGE CASE n = { negative values}
-// 	// Throws for memcpy and not for ft_memcpy
 // 	char	src1[] = "hello world";
 // 	char	dest1[100] = "ab";
 

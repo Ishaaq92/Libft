@@ -6,11 +6,11 @@
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 18:19:07 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 11:51:08 by isahmed          ###   ########.fr       */
+/*   Updated: 2024/12/03 14:14:15 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 97 && c <= 122)
 		return (c - 32);

@@ -5,107 +5,110 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 17:14:12 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/02 14:42:23 by isahmed          ###   ########.fr       */
+/*   Created: 2024/12/04 15:59:33 by isahmed           #+#    #+#             */
+/*   Updated: 2024/12/06 17:39:43 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	delimits(char const *s, char c) // DEFINE AS STATIC
+int	nbrwords(char const *s, char c)
 {
 	int	i;
-	int	spaces;
+	int	number;
 
+	number = 0;
+	if (c == 0)
+		return (1);
+	if (!s)
+		return (0);
 	i = 0;
-	spaces = 0;
-	while (s[i] == c)
+	while (s[i] == c && s[i] != '\0')
 		i ++;
 	while (s[i] != 0)
 	{
-		if (s[i] == c)
+		if (s[i] != c)
 		{
-			while (s[i] == c)
+			number ++;
+			while (s[i] != c && s[i] != 0)
 				i ++;
-			if (s[i] != '\0')
-				spaces ++;
 		}
-		i ++;
+		while (s[i] == c && s[i] != '\0')
+			i ++;
 	}
-	return (spaces);
+	return (number);
 }
 
 static int	wdlen(char const *s, char c, int start)
 {
 	int	i;
-	int	length;
 
-	length = 0;
 	i = 0;
 	while (s[start + i] != 0 && s[start + i] != c)
-	{
 		i ++;
-		length ++;
-	}
-	return (length);
+	return (i);
 }
 
-char	*setchrs(char *word, const char *s, int i, char c)
+int	setchrs(char *word, char const *s, char c, int i)
 {
 	int	j;
 
 	j = 0;
 	while (s[i] != c && s[i] != 0)
-	{
-		word[j] = s[i];
-		i ++;
-		j ++;
-	}
-	word[j] = 0;
-	return (word);
+		word[j++] = s[i++];
+	word[j] = '\0';
+	return (i);
 }
 
-int	skipdelimit(char const *s, char c, int i)
+int	freedem(char **array, int word)
 {
-	while (s[i] == c)
-		i ++;
-	return (i);
+	if (!array[word])
+	{
+		while (word > 0)
+			free (array[--word]);
+		free(array);
+		return (1);
+	}
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
 	int		i;
-	int		word_index;
-	int		current_length;
+	int		word;
 
+	word = 0;
+	array = malloc(sizeof(char *) * (nbrwords(s, c) + 1));
+	if (!array)
+		return (NULL);
 	i = 0;
-	word_index = 0;
-	array = malloc(sizeof(char *) * (delimits(s, c) + 1));
+	while (s[i] == c && s[i] != '\0')
+		i ++;
 	while (s[i] != 0)
 	{
-		i = skipdelimit(s, c, i);
-		current_length = wdlen(s, c, i);
-		array[word_index] = malloc (sizeof(char *) * (current_length + 1));
-		if (s[i] != c || s[i] == 0)
+		if (s[i] != c)
 		{
-			array[word_index] = setchrs(array[word_index], s, i, c);
-			i += current_length;
-			current_length = 0;
-			word_index ++;
+			array[word] = malloc(sizeof(char) * (wdlen(s, c, i) + 1));
+			if (freedem(array, word) == 1)
+				return (NULL);
+			i = setchrs(array[word++], s, c, i);
 		}
-		i = skipdelimit(s, c, i);
+		while (s[i] == c && s[i] != '\0')
+			i ++;
 	}
-	array[word_index] = 0;
+	array[word] = NULL;
 	return (array);
 }
 
-// int main(void)
+// int		main(void)
 // {
-// 	int	i;
-// 	char	**words = ft_split("     ", ' ');
+// 	char	s[] = "test";
+// 	char	**words;
+// 	int		i;
 
 // 	i = 0;
+// 	words = ft_split(s, 0);
 // 	while (words[i] != 0)
 // 	{
 // 		printf("%s\n", words[i]);
@@ -113,6 +116,4 @@ char	**ft_split(char const *s, char c)
 // 		i ++;
 // 	}
 // 	free(words);
-// 	printf("Number of words: %d\n", i);
-// 	return (0);
 // }

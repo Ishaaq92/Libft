@@ -6,36 +6,27 @@
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:50:24 by isahmed           #+#    #+#             */
-/*   Updated: 2024/11/28 12:10:09 by isahmed          ###   ########.fr       */
+/*   Updated: 2024/12/04 14:12:43 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	size_t	length_little;
-	char	*ptr;
 
 	i = 0;
-	j = 0;
-	length_little = ft_strlen(little);
+	if (little[i] == 0)
+		return ((char *) big);
 	while (i < len && big[i] != 0)
 	{
-		while (big[i] == little[j] && big[i] != 0)
-		{
-			i ++;
-			j ++;
-		}
-		if (j == length_little)
-		{
-			ptr = (char *) &big[i - length_little];
-			return (ptr);
-		}
 		j = 0;
+		while (big[i + j] == little[j] && big[i + j] != 0 && (i + j) < len)
+			j ++;
+		if (little[j] == 0)
+			return ((char *) &big[i]);
 		i ++;
 	}
 	return (NULL);
@@ -43,8 +34,11 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 // int	main(void)
 // {
-// 	char	big[] = "this is a test t te tes test";
-// 	char	little[] = "a";
-// 	printf("\n%s\n", ft_strnstr(big, little, 28));
-// 	// printf("\n%d\n", strnstr(big, little, 14));
+// 	char	big[] = "test";
+// 	char	little[] = "";
+// 	printf("%s\n", ft_strnstr(big, little, 0));
+
+// 	// char	big1[] = "";
+// 	// char	little1[] = "";
+// 	// printf("%s\n", strnstr(big1, little1, 0));
 // }

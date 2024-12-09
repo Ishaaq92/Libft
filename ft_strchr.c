@@ -6,33 +6,32 @@
 /*   By: isahmed <isahmed@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 11:45:28 by isahmed           #+#    #+#             */
-/*   Updated: 2024/12/03 11:47:04 by isahmed          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:48:41 by isahmed          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int		i;
-	char	*ptr;
 
 	i = 0;
-	while (str[i] != 0)
+	if (!ft_isascii(c))
+		return ((char *) &s[i]);
+	while (s[i] != 0)
 	{
-		if (str[i] == c)
-		{
-			ptr = (char *)&str[i];
-			return (ptr);
-		}
+		if (s[i] == c)
+			return ((char *) &s[i]);
 		i ++;
 	}
+	if (c == 0)
+		return ((char *) &s[i]);
 	return (0);
 }
 
-// #include <stdio.h>
 // int main(void)
 // {
-//     printf("%s\n", ft_strchr("hello world", 100));
+//     printf("%s\n", ft_strchr("tripouille", 't' + 256));
 // 	return (0);
 // }
