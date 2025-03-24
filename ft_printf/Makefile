@@ -13,10 +13,10 @@ $(BINARY): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJECTS)
+	@rm -rf $(OBJECTS)
 
 fclean: clean
-	rm -rf $(BINARY)
+	@rm -rf $(BINARY)
 
 re: fclean all
 

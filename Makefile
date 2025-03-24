@@ -20,12 +20,12 @@ $(BINARY): $(OBJECTS) $(FT_PRINTF)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 clean:
-	rm -rf $(OBJECTS)
-	make clean -C ft_printf/
+	@rm -rf $(OBJECTS)
+	@make --no-print-directory -C ft_printf/ clean
 
 fclean:
-	rm -rf $(BINARY) $(OBJECTS)
-	make fclean -C ft_printf/
+	@rm -rf $(BINARY) $(OBJECTS)
+	@make --no-print-directory -C ft_printf/ fclean
 
 re: fclean all
 	
