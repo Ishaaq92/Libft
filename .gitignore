@@ -1,3 +1,5 @@
 *.o
 
 libft.a
+
+ft_printf/libftprintf.a
